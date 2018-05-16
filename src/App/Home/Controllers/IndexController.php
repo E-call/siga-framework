@@ -12,4 +12,7 @@ namespace App\Home\Controllers;
 class IndexController
 {
 
+    public function index(){
+        echo "Aqui";
+    }
 }

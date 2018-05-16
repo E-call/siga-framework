@@ -6,7 +6,7 @@
  * Time: 11:43
  */
 
-namespace App\Home\Controllers;
+namespace App\Admin\Controllers;
 
 
 class IndexController

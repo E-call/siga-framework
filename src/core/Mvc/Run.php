@@ -9,19 +9,36 @@
 namespace SIGA\Mvc;
 
 
+use Config\Config;
+use SIGA\Mvc\Exceptions\HttpException;
+
 class Run
 {
 
+    /**
+     * @var $request Request
+     */
+    protected $request;
     public function init(){
-      d($this->getRequest()->getRoute());
+        $this->setRequest();
+        echo $this->load($this->request->getRoute(), $this->request->getController(), $this->request->getAction());
     }
 
     private function load($env, $controller, $action){
 
+        $controller = ucfirst($controller);
+        $controller = sprintf(Config::CONTROLLER_NAMESPACE, $env, $controller);
+
+        if (class_exists($controller)){
+            $controller = new $controller($this->request->getDiactoros());
+            return $controller->$action();
+        }
+        throw new HttpException(sprintf("Controller %s,  not found",$controller));
 
     }
 
-    private function getRequest(){
-        return new Request();
+    private function setRequest(){
+        $this->request = new Request();
+        return $this;
     }
 }
