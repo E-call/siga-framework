@@ -11,9 +11,9 @@ if(!file_exists($composer_autoload)){
 require $composer_autoload;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-
+$run = new \SIGA\Mvc\Run();
 try {
-
+$run->init();
 } catch (Exception $e) {
     $log = new Logger('name');
     $path = __DIR__ . '/../data/error.log';
