@@ -9,10 +9,10 @@
 namespace App\Home\Controllers;
 
 
-class IndexController
+use SIGA\Mvc\AbstractController;
+
+class IndexController extends AbstractController
 {
 
-    public function index(){
-        echo "Aqui";
-    }
+
 }

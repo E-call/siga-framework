@@ -33,7 +33,6 @@ class Request
           $_FILES
         );
         $this->setUri($this->diactoros->getUri()->getPath());
-       d($this->uri);
     }
 
     /**
