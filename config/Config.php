@@ -12,6 +12,7 @@ namespace Config;
 class Config
 {
 
+    const BASE_PATH = __DIR__.'/../';
     const CONTROLLER_NAMESPACE = "App\\%s\\Controllers\\%sController";
     const PATH_ADMIN = "Admin";
     const PATH_HOME = "Home";

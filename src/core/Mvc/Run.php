@@ -30,7 +30,7 @@ class Run
         $controller = sprintf(Config::CONTROLLER_NAMESPACE, $env, $controller);
 
         if (class_exists($controller)){
-            $controller = new $controller($this->request->getDiactoros());
+            $controller = new $controller($this->request);
             return $controller->$action();
         }
         throw new HttpException(sprintf("Controller %s,  not found",$controller));
