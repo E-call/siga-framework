@@ -1,0 +1,20 @@
+{
+    "name": "caltj/siga-framework",
+    "authors": [
+        {
+            "name": "callcocam",
+            "email": "callcocam@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zend-diactoros": "^1.7",
+        "monolog/monolog": "^1.23",
+        "kint-php/kint": "^2.2"
+    },
+    "autoload": {
+      "psr-4":{
+        "App\\": "src/App",
+        "SIGA\\Mvc\\": "src/core/Mvc"
+      }
+    }
+}
