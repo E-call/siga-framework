@@ -26,13 +26,14 @@ class Request
     {
 
         $this->diactoros = ServerRequestFactory::fromGlobals(
-          $_SERVER,
-          $_GET,
-          $_POST,
-          $_COOKIE,
-          $_FILES
+            $_SERVER,
+            $_GET,
+            $_POST,
+            $_COOKIE,
+            $_FILES
         );
-        $this->setUri($this->diactoros->getUri()->getPath());
+        $this->setUri($this->diactoros->getUri()->getPath())
+            ->setRoute($this->uri[1]);
     }
 
     /**
@@ -54,15 +55,28 @@ class Request
     }
 
     /**
+     * @param string $route
+     * @return Request
+     */
+    public function setRoute($route)
+    {
+        if(!empty($route)){
+            if(ucfirst($route) == Config::PATH_ADMIN){
+                $this->route = Config::PATH_ADMIN;
+            }
+            else{
+                $this->route = $route;
+            }
+        }
+        return $this;
+    }
+
+
+    /**
      * @return string
      */
     public function getRoute()
     {
-        if(isset($this->uri[1])){
-            if(ucfirst($this->uri[1]) == Config::PATH_ADMIN){
-                 $this->route = Config::PATH_ADMIN;
-            }
-        }
         return $this->route;
     }
 

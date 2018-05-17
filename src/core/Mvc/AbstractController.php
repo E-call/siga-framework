@@ -15,7 +15,7 @@ abstract class AbstractController
     /**
      * @var Request
      */
-    private $request;
+    protected $request;
 
     /**
      * AbstractController constructor.

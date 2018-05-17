@@ -33,8 +33,10 @@ class Run
             $controller = new $controller($this->request);
             return $controller->$action();
         }
-        throw new HttpException(sprintf("Controller %s,  not found",$controller));
-
+        new HttpException(sprintf("Controller %s,  not found",$controller));
+        $controller = Config::CONTROLLER_NOT_FOUND;
+        $controller = new $controller($this->request);
+        return $controller->index();
     }
 
     private function setRequest(){
